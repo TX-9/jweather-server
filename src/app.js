@@ -1,13 +1,14 @@
+const path = require('path')
 const express = require('express')
 
 const app = express()
+const resourceDirectoryPath = path.join(__dirname, '../resource')
+app.use(express.static(resourceDirectoryPath))
 
-app.get('', (req, res) => {
-    res.send('Hello Express')
-})
-
-app.get('/help', (req, res) => {
-    res.send('Help page')
+app.get('/weather', (req, res) => {
+    res.send({
+        forecast: 'raining'
+    })
 })
 
 app.listen(3000, () => {

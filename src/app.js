@@ -8,7 +8,22 @@ app.set('view engine', 'hbs')
 app.use(express.static(resourceDirectoryPath))
 
 app.get('', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: 'Weather App',
+        ver: '1.0'
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About'
+    })
+})
+
+app.get('/help', (req, res) => {
+    res.render('help', {
+        desc: 'Help pages..'
+    })
 })
 
 app.get('/weather', (req, res) => {
